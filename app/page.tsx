@@ -1,27 +1,89 @@
-import { getServerSession } from "next-auth"
-import { redirect } from "next/navigation"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
-import { SignOutButton } from "../components/sign"
+// import { getServerSession } from "next-auth"
+// import { redirect } from "next/navigation"
+// import { authOptions } from "../app/api/auth/[...nextAuth]/route"
+// import { SignOutButton } from "../components/sign"
+
+// export default async function Home() {
+//   const session = await getServerSession(authOptions)
+
+//   if (!session?.user) {
+//     redirect("/login")
+//   }
+
+//   return (
+//     <div className="container">
+//       <div className="card">
+//         <div className="profile">
+//           {session.user.image && (
+//             <img src={session.user.image} alt={session.user.name || "User"} />
+//           )}
+//           <h2>{session.user.name}</h2>
+//           <p>{session.user.email}</p>
+//           <SignOutButton />
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { SignOutButton } from "@/components/sign";
 
 export default async function Home() {
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions);
 
   if (!session?.user) {
-    redirect("/login")
+    redirect("/login");
   }
 
   return (
-    <div className="container">
-      <div className="card">
-        <div className="profile">
+    <div className="container mx-auto p-8">
+      <div className="card bg-gray-100 p-6 rounded shadow">
+        <div className="profile text-center">
           {session.user.image && (
-            <img src={session.user.image} alt={session.user.name || "User"} />
+            <img
+              src={session.user.image}
+              alt={session.user.name || "User"}
+              className="w-24 h-24 rounded-full mx-auto"
+            />
           )}
-          <h2>{session.user.name}</h2>
-          <p>{session.user.email}</p>
+          <h2 className="text-xl font-bold mt-2">{session.user.name}</h2>
+          <p className="text-gray-600">{session.user.email}</p>
           <SignOutButton />
         </div>
       </div>
     </div>
-  )
+  );
 }
