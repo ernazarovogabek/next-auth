@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f5f7fa;
+  --foreground: #1a202c;
+  --card-bg: #ffffff;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --secondary: #6366f1;
+  --border: #e2e8f0;
+  --error: #ef4444;
+  --success: #10b981;
 }
 
 @theme inline {
@@ -14,13 +21,224 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #f1f5f9;
+    --card-bg: #1e293b;
+    --border: #334155;
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid var(--border);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+  color: var(--foreground);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input {
+  padding: 12px 16px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.2s;
+  background: var(--card-bg);
+  color: var(--foreground);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.button-primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.button-secondary {
+  background: var(--card-bg);
+  color: var(--foreground);
+  border: 2px solid var(--border);
+}
+
+.button-secondary:hover:not(:disabled) {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.button-google {
+  background: #fff;
+  color: #3c4043;
+  border: 2px solid #dadce0;
+}
+
+.button-google:hover:not(:disabled) {
+  background: #f8f9fa;
+  border-color: #4285f4;
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.2);
+}
+
+.button-github {
+  background: #24292e;
+  color: white;
+  border: 2px solid #24292e;
+}
+
+.button-github:hover:not(:disabled) {
+  background: #1b1f23;
+  box-shadow: 0 4px 12px rgba(36, 41, 46, 0.3);
+}
+
+.divider {
+  text-align: center;
+  margin: 24px 0;
+  position: relative;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: var(--border);
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.error {
+  background: #fee;
+  color: var(--error);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  border: 1px solid #fecaca;
+}
+
+.profile {
+  text-align: center;
+}
+
+.profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  border: 4px solid var(--primary);
+}
+
+.profile h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.profile p {
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.test-info {
+  margin-top: 24px;
+  padding: 16px;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #0c4a6e;
+}
+
+@media (prefers-color-scheme: dark) {
+  .test-info {
+    background: #1e3a5f;
+    border-color: #1e40af;
+    color: #93c5fd;
+  }
+  
+  .button-google {
+    background: #2d3748;
+    color: #e2e8f0;
+    border-color: #4a5568;
+  }
+}
+
